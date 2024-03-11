@@ -8,9 +8,6 @@ function App() {
   const [charAllowed, setCharAllowed] = useState(false)
   const [password, setPassword] = useState("")
 
-  //useRef hook
-  const passwordRef = useRef(null)
-
   const passwordGenerator = useCallback(() => {
     let pass = ""
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -20,23 +17,29 @@ function App() {
     for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * str.length + 1)
       pass += str.charAt(char)
-      
     }
-
     setPassword(pass)
-
-
+    
   }, [length, numberAllowed, charAllowed, setPassword])
+  
+ 
+ 
+  //Render the function useCallback vala
+  useEffect(() => {
+    passwordGenerator()
+  }, [length, numberAllowed, charAllowed, passwordGenerator])
+  
+  
+  //useRef hook
+  const passwordRef = useRef(null)
 
   const copyPasswordToClipboard = useCallback(() => {
-    passwordRef.current?.select();
+    passwordRef.current?.select(); //Is password is empty or filled
     passwordRef.current?.setSelectionRange(0, 999);
     window.navigator.clipboard.writeText(password)
   }, [password])
 
-  useEffect(() => {
-    passwordGenerator()
-  }, [length, numberAllowed, charAllowed, passwordGenerator])
+
   return (
     
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
