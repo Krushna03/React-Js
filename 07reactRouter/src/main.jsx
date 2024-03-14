@@ -10,7 +10,7 @@ import Contact from './Components/Contact/Contact.jsx'
 import User from './Components/User/User.jsx'
 import Github, { githubInfoLoader } from './Components/Github/Github.jsx'
 
-//#1 way
+//#1 way to create router
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
@@ -32,7 +32,8 @@ import Github, { githubInfoLoader } from './Components/Github/Github.jsx'
 //   }
 // ])
 
-//#1 way
+ 
+//#2 way to create router
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}> 
@@ -45,7 +46,6 @@ const router = createBrowserRouter(
           path='github' 
           element={<Github />} 
        />
-
     </Route>
   )
 )
