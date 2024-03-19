@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
-
+import './App.css'
 
 
 function App() {
@@ -8,6 +8,8 @@ function App() {
   const [charAllowed, setCharAllowed] = useState(false)
   const [password, setPassword] = useState("")
 
+
+// This Hook takes function/callBcak & dependency. Aur ye hook dependency change hone pr react karega, execute hoga. Ye function ko execute karta hai on the basis of dependencies
   const passwordGenerator = useCallback(() => {
     let pass = ""
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"

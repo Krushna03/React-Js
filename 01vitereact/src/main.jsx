@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 
 
-function MyApp(){ //We call MyApp() inside render like as we call function but hsould not call like this
+function MyApp(){ //We call MyApp() inside render like as we call function but should not call like this
     return (
         <div>
             <h1>Custom App | chai</h1>
@@ -23,7 +23,7 @@ function MyApp(){ //We call MyApp() inside render like as we call function but h
 // }
 
 
-//WIll get executed 
+//WIll get executed becaz it's a variable storing function
 const anotherElement = (
     <a href="https://google.com" target='_blank'>Visit google</a>
 )
@@ -40,12 +40,12 @@ const reactElement = React.createElement(
     {href: 'https://google.com',target: '_blank' },  //object
     'click me to visit google',  //innerText
 
-     anotherUser //: It is a ex of evaluated expression & js element or variables
+     anotherUser //: It is a example of evaluated expression & js element or variables
 )
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-
-   anotherElement 
+   
+    reactElement 
   
 )
