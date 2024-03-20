@@ -4,6 +4,7 @@ import { removeTodo } from '../Features/todo/todoSlice'
 
 function Todo() {
 
+  //In useSelector we get the access of the state
    const todos = useSelector( state => state.todos)
    const dispatch = useDispatch()
 

@@ -7,7 +7,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
    }]
  }
 
-
+//Here slice is Feature.
  export const todoSlice = createSlice({
      name : 'todo',
      initialState,
