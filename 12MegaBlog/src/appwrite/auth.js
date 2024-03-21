@@ -1,4 +1,4 @@
-import config from "../config/config";
+import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
 
 //Quality code 
@@ -8,8 +8,8 @@ export class AuthService{
 
    constructor(){
       this.client
-        .setEndpoint(config.appwriteUrl)
-        .setProject(config.appwritePRojectID);
+        .setEndpoint(conf.appwriteUrl)
+        .setProject(conf.appwriteProjectID);
 
       this.account = new Account(this.client)
    }
