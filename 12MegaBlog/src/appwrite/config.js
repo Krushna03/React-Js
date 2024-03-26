@@ -92,8 +92,7 @@ export class DatabaseService {
 
 
 
-
-      // File upload service
+      // File upload service (storage)
       async uploadFile(file){
          try {
             return await this.bucket.createFile(
@@ -127,6 +126,7 @@ export class DatabaseService {
           )
       }
 }
+
 
 const databaseService = new DatabaseService();
 

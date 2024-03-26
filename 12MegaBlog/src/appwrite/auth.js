@@ -18,7 +18,7 @@ export class AuthService{
       try {
         const userAccount = await this.account.create(ID.unique(), email, password, name)
             if(userAccount){
-               // return userAccount  call another methodlog in vala
+               // return userAccount call another methodl og in vala
                return this.login({email, password})
             }
             else{
