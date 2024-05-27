@@ -33,10 +33,10 @@ function App() {
     if(todos && todos.length > 0){
       setTodos(todos)
     }
-  })
+  }, [])
 
   useEffect(() => {
-      localStorage.getItem('todo', JSON.stringify(todos))
+      localStorage.setItem('todo', JSON.stringify(todos))
   },[todos])
 
 
