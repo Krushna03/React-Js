@@ -115,9 +115,11 @@ export default function PostForm({ post }) {
                     {...register("status", { required: true })}
                 />
                 <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update" : "Submit"}
+                    {post ? "Update me" : "Submit"}
                 </Button>
             </div>
+   
         </form>
     );
+    
 }
