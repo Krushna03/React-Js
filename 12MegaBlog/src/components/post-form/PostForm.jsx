@@ -19,6 +19,7 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
+     try {
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
@@ -26,13 +27,15 @@ export default function PostForm({ post }) {
                 appwriteService.deleteFile(post.featuredImage);
             }
 
+            console.log(post.$id, ": id");
+            console.log(data, ": data");
             const dbPost = await appwriteService.updatePost(post.$id, {
                 ...data,
-                featuredImage: file ? file.$id : post.featuredImage,
+                featuredImage: file ? file.$id : undefined
             });
 
             if (dbPost) {
-                navigate(`/post/${dbPost.$id}`);
+                navigate(`/post/${dbPost.$id}`); 
             }
         } else {
             const file = await appwriteService.uploadFile(data.image[0]);
@@ -40,14 +43,19 @@ export default function PostForm({ post }) {
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
-                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
+                const dbPost = await appwriteService.createPost({ ...data, userId: fileId });
 
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
             }
         }
+      } catch(error){
+        console.error("Submit function error :",  error)
+      }
     };
+
+
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string")
@@ -67,7 +75,7 @@ export default function PostForm({ post }) {
             }
         });
     
-        return () => subscription.unsubscribe && subscription.unsubscribe();
+        return () => subscription.unsubscribe();
     }, [watch, slugTransform, setValue]);
 
 
@@ -114,8 +122,9 @@ export default function PostForm({ post }) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update me" : "Submit"}
+                <Button type="submit" bgColor={post ? "bg-green-700" : undefined} className="w-full">
+                
+                    {post ? "Update" : "Submit"}
                 </Button>
             </div>
    
