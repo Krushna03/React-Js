@@ -80,18 +80,18 @@ export default function PostForm({ post }) {
 
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap bg-gray-200 rounded-lg">
+            <div className="w-2/3 px-4 py-3">
                 <Input
                     label="Title :"
                     placeholder="Title"
-                    className="mb-4"
+                    className="mb-4 placeholder:text-slate-600 placeholder:text-sm"
                     {...register("title", { required: true })}
                 />
                 <Input
                     label="Slug :"
                     placeholder="Slug"
-                    className="mb-4"
+                    className="mb-4 placeholder:text-slate-600  placeholder:text-sm"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
@@ -99,7 +99,7 @@ export default function PostForm({ post }) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+            <div className="w-1/3 px-3 py-3">
                 <Input
                     label="Featured Image :"
                     type="file"
@@ -108,11 +108,11 @@ export default function PostForm({ post }) {
                     {...register("image", { required: !post })}
                 />
                 {post && (
-                    <div className="w-full mb-4">
+                    <div className="w-full mb-4 ">
                         <img
                             src={appwriteService.getFilePreview(post.featuredImage)}
                             alt={post.title}
-                            className="rounded-lg"
+                            className="rounded-lg border-8 border-white"
                         />
                     </div>
                 )}

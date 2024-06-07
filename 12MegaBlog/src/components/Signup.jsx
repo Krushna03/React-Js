@@ -12,19 +12,19 @@ function Signup() {
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm()
 
-    const create = async(data) => {
-        setError("")
-        try {
-            const userData = await authService.createAccount(data)
-            if (userData) {
-                const userData = await authService.getCurrentUser()
-                if(userData) dispatch(login(userData));
-                navigate("/")
-            }
-        } catch (error) {
-            setError(error.message)
+const create = async(data) => {
+    setError("")
+    try {
+        const userData = await authService.createAccount(data)
+        if (userData) {
+            const userData = await authService.getCurrentUser()
+            if(userData) dispatch(login(userData));
+            navigate("/")
         }
+    } catch (error) {
+        setError(error.message)
     }
+}
 
   return (
     <div className="flex items-center justify-center">
