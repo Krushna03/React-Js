@@ -3,8 +3,7 @@ import appwriteService from "../appwrite/config";
 import {Container,  PostCard} from '../components'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-
+import CarouselComponent from '../components/CarouselComponent';
 
 
 function Home() {
@@ -40,11 +39,11 @@ function Home() {
     return posts ? (
         <div className='w-full py-8'>
 
-        {/* <div>
-            <Container>
-                <IMageSlider />
-            </Container>
-        </div> */}
+     <div className="w-full py-4">
+        <Container>
+          <CarouselComponent />
+        </Container>
+        </div>
 
          <div className='pt-14 pb-5 ml-10'>
             <p className=' text-xl w-[11%] h-[7vh] text-center  p-2 rounded-lg bg-black text-white font-mono hover:bg-slate-600'>
